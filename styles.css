@@ -1,0 +1,484 @@
+/* Created by Steven Saw 7-22-2025 GIT 414 - Web Site Design - HTML - CSS */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Root */
+@import url('https://fonts.googleapis.com/css2?family=Molle:ital@1&family=Montserrat&display=swap');
+
+:root {
+    --yellow: #F6D64A;
+    --teal: #55BCD5;
+    --purple: #9B26B0;
+    --blue: #499BD2;
+    --dark-gray: #222222;
+    --light-gray: #EAEAEA;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
+/* Header, Nav */
+h1, h2, h3{
+    font-family: 'Molle', cursive;
+    
+}
+
+h4, p, q, small, nav, button, form{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navigation and Dropdown Menu */
+header {
+    position: relative;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--teal);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Position navigation at the top */
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Push Wunderlust h1 down under Menu Navigation */
+header h1 {
+    margin-top: 10px;
+    padding-left: 20px;
+    text-align: left;
+    font-size: 2.5em;
+}
+
+header p {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 1.05em;
+}
+
+#logo {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#logo img {
+    width: 100px;
+    height: auto;
+}
+
+#menu-toggle {
+    position: relative;
+    margin: 0;
+}
+
+
+#toggle {
+    display: none;
+}
+
+/* Style the menu label (hamburger button) */
+#menu-toggle label {
+    display: block;
+    background-color: var(--yellow);
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#menu-toggle label:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* Style the dropdown menu */
+#menu-toggle ul {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--teal);
+    color: var(--black);
+    min-width: 200px;
+    max-width: 90vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Hide by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Show dropdown when checkbox is checked */
+#toggle:checked + label + ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Style dropdown menu items */
+#menu-toggle ul li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#menu-toggle ul li:last-child {
+    border-bottom: none;
+}
+
+#menu-toggle ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+#menu-toggle ul li a:hover,
+#menu-toggle ul li.active a {
+    background-color: var(--blue);
+}
+
+/* Screen reader only content hidden in regular view */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Hide skip to main content link */
+#skip {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Show skip link when focused (for keyboard navigation) */
+#skip:focus {
+    position: absolute;
+    left: 6px;
+    top: 7px;
+    width: auto;
+    height: auto;
+    padding: 8px 16px;
+    background: var(--yellow);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+/* Not sure how to do the color fade as seen in the mock page? */
+
+/* Body */
+
+/* Majorca Section */
+#intro h2{
+    text-align: left;
+    font-size: 2em;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+#intro p {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+#img-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+#img-grid img,
+#img-grid picture {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; 
+}
+
+/*Ajudting the width of the images so that it touches the the max size width of the webpage like in the mock */
+
+/* Plan Section */
+#plan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box; 
+    background-color: var(--yellow);
+
+}
+
+#plan h3 {
+    padding-left: 20px;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#plan h4 {
+    padding-bottom: 10px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#plan section {
+    background-color: var(--teal);
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border: 3px solid var(--white);
+    border-radius: 10px;
+    box-sizing: border-box; 
+    margin-bottom: 15px;
+}
+
+#plan section img { /* Gives the text and image a white border */
+    border: 3px solid var(--white);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--teal);
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* Testimonials Section */
+#testimonials { /* Center the pictures and text aligning with the rest of the webpage*/
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    background-color: var(--light-gray);
+    box-sizing: border-box;
+    margin-top: 20px;
+    
+}
+
+#testimonials h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#testimonials section {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#testimonials h4{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+#testimonials p {
+    text-align: center;
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+#testimonials q {
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.4;
+    display: block;
+    font-style: italic;
+}
+
+#testimonials img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* About your destination Section */
+#about {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--blue);
+}
+
+#about h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    grid-column: 1 / -1;
+    color: var(--black);
+}
+
+#about > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#about h4{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--black);
+    padding-top: 10px;
+}
+#about p {
+    text-align: center;
+    font-size: 1.2em;
+}
+/* Contact Section */
+#contact {
+    padding: 20px;
+    background-color: var(--white);
+}
+
+#contact h3 {
+    font-size: 1.5em;
+}
+
+#contact h3 span {
+    font-size: 0.5em;
+    font-family: sans-serif;;
+}
+#contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+#names, #nums, #selects {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+#contact input, #contact select {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 2px solid var(--purple);
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#contact label {
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+}
+
+
+#contact fieldset {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid var(--purple);
+    border-radius: 5px;
+}
+
+#mySubmit {
+    background-color: var(--purple);
+    color: var(--white);
+    
+}
+
+/* Footer Section */
+footer {
+    background-color: var(--light-gray);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Remove link highlink from anchor tags */
+footer a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
