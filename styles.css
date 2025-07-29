@@ -127,7 +127,7 @@ header p {
     display: none;
 }
 
-/* Style the menu label (hamburger button) */
+/* Style the menu label */
 #menu-toggle label {
     display: block;
     background-color: var(--yellow);
